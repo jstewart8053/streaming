@@ -2,7 +2,7 @@ import React from "react";
 
 function Directions() {
   return (
-    <div className="col">
+    <div className="row">
       <img
         src="/assets/directions.svg"
         alt="directions"
