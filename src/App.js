@@ -14,6 +14,11 @@ function App() {
     getResults();
   }, [query]);
 
+  const getResults = async () => {
+    const response = await fetchData();
+    setResults(response);
+  };
+
   const fetchData = async () => {
     const options = {
       method: "GET",
@@ -33,14 +38,10 @@ function App() {
 
     try {
       const response = await axios(options);
-      console.log(response.data);
+      console.log(response.data.result[0]);
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const getResults = async () => {
-    const response = await fetchData();
   };
 
   const getSearch = (e) => {
