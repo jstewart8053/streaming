@@ -16,7 +16,8 @@ function App() {
 
   const getResults = async () => {
     const response = await fetchData();
-    setResults(response);
+    setResults(response.result);
+    console.log("results", results);
   };
 
   const fetchData = async () => {
@@ -38,12 +39,12 @@ function App() {
 
     try {
       const response = await axios(options);
-      console.log(response.data.result[0]);
+      return response.data;
     } catch (error) {
       console.error(error);
+      return null;
     }
   };
-
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
@@ -77,10 +78,11 @@ function App() {
         </div>
       </div>
       <div className="cardContainer">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+        {results && results.length > 0 ? (
+          results.map((result, index) => <Cards key={index} {...result} />)
+        ) : (
+          <p>No results found</p>
+        )}
       </div>
     </>
   );

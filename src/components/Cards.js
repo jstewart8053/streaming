@@ -1,25 +1,38 @@
 import React from "react";
-// import "../App.css";
 
-function Cards() {
+function Cards(props) {
+  const usStreamingInfo = props.streamingInfo?.us || [];
+
+  // Create an array to store unique service providers
+  const uniqueServiceProviders = [];
+
+  // Loop through the streaming options and add unique service providers to the array
+  usStreamingInfo.forEach((streamingOption) => {
+    if (
+      !uniqueServiceProviders.some(
+        (provider) => provider.service === streamingOption.service
+      )
+    ) {
+      uniqueServiceProviders.push(streamingOption);
+    }
+  });
+
   return (
-    <div className="container">
-      <div id="main">
-        <div class="cardHolder" style={{ width: "18rem" }}>
-          <img src="..." class="card-img-top" alt="placeholder" />
-          <div class="cardHolder-body">
-            <h5 class="cardHolder-title">Card title</h5>
-            <p class="cardHolder-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+    <>
+      {uniqueServiceProviders.map((streamingOption, index) => (
+        <div className="cardHolder" style={{ width: "18rem" }} key={index}>
+          <div className="cardHolder-body">
+            <h5 className="cardHolder-title">{props.originalTitle}</h5>
+            <p>Service: {streamingOption.service}</p>
+            <p>Streaming Type: {streamingOption.streamingType}</p>
+            <p>Quality: {streamingOption.quality}</p>
+            <p>
+              Link: <a href={streamingOption.link}>Go to Streaming Option</a>
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
           </div>
         </div>
-      </div>
-    </div>
+      ))}
+    </>
   );
 }
 
