@@ -1,4 +1,5 @@
 import React from "react";
+///TODO: update background of cards with image from movie
 
 function Cards(props) {
   const usStreamingInfo = props.streamingInfo?.us || [];
@@ -20,7 +21,21 @@ function Cards(props) {
   return (
     <>
       {uniqueServiceProviders.map((streamingOption, index) => (
-        <div className="cardHolder" style={{ width: "18rem" }} key={index}>
+        <div
+          className="cardHolder"
+          style={{
+            width: "300px",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            borderRadius: "5px",
+            margin: "20px",
+            overflow: "hidden",
+            backgroundImage: `url(${streamingOption.link})`, // Set background image here
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+          key={index}
+        >
           <div className="cardHolder-body">
             <h5 className="cardHolder-title">{props.originalTitle}</h5>
             <p>
