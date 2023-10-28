@@ -48,11 +48,14 @@ function App() {
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
-    setSearch("");
   };
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
+  };
+
+  const clearSearch = () => {
+    setSearch("");
   };
 
   return (
@@ -72,6 +75,13 @@ function App() {
 
               <button className="search-button" type="submit">
                 Search
+              </button>
+              <button
+                className="clear-button"
+                type="button"
+                onClick={clearSearch}
+              >
+                Clear
               </button>
             </form>
           </div>

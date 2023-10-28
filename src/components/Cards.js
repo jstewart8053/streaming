@@ -23,11 +23,22 @@ function Cards(props) {
         <div className="cardHolder" style={{ width: "18rem" }} key={index}>
           <div className="cardHolder-body">
             <h5 className="cardHolder-title">{props.originalTitle}</h5>
-            <p>Service: {streamingOption.service}</p>
-            <p>Streaming Type: {streamingOption.streamingType}</p>
-            <p>Quality: {streamingOption.quality}</p>
             <p>
-              Link: <a href={streamingOption.link}>Go to Streaming Option</a>
+              <b>Service: </b>
+              {streamingOption.service.toUpperCase()}
+            </p>
+            <p>
+              <b>Streaming Type: </b>
+              {streamingOption.streamingType}
+            </p>
+            <p>
+              <b>Quality: </b> {streamingOption.quality}
+            </p>
+            <p>
+              <b>Link: </b>{" "}
+              <a href={streamingOption.link}>
+                Go to {streamingOption.service.toUpperCase()}
+              </a>
             </p>
           </div>
         </div>
