@@ -3,5 +3,5 @@ https://streaming-tq26-5stbh1zd2-jstewart8053.vercel.app/
 
 -Clone project
 -npm install
--test start
+-npm start
 -... it's all yours!
